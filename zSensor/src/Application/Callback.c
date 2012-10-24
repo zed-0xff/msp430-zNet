@@ -188,10 +188,10 @@ unsigned char Timer1CCREventHandler(const void * params)
  *
  * @return an unsigned character
  */
-unsigned char Timer2CCREventHandler(const void * params)
-{
-  return EVENT_NO_ACTION;
-}
+//unsigned char Timer2CCREventHandler(const void * params)
+//{
+//  return EVENT_NO_ACTION;
+//}
 
 /**
  * @fn unsigned char SWTimer0EventHandler(const void * params)

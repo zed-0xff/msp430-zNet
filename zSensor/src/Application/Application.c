@@ -585,9 +585,9 @@ void InitSystem(void)
   TimerConfigure(__BSP_TIMER1);                                                 // Initialize Timer1
   AttachEvent(__BSP_TIMER1_CCR0_EVENT_HANDLE, Timer1CCREventHandler);
   AttachEvent(__BSP_TIMER1_CCR1_EVENT_HANDLE, Timer1CCREventHandler);
-  TimerConfigure(__BSP_TIMER2);                                                 // Initialize Timer2
-  AttachEvent(__BSP_TIMER2_CCR0_EVENT_HANDLE, Timer2CCREventHandler);
-  TimerSetCCR(__BSP_TIMER2, __BSP_TIMER2_CCR0, __BSP_CONFIG_SWTIMER1_SOURCE_DIV);
+//  TimerConfigure(__BSP_TIMER2);                                                 // Initialize Timer2
+//  AttachEvent(__BSP_TIMER2_CCR0_EVENT_HANDLE, Timer2CCREventHandler);
+//  TimerSetCCR(__BSP_TIMER2, __BSP_TIMER2_CCR0, __BSP_CONFIG_SWTIMER1_SOURCE_DIV);
 
   // Setup software timers.
   SoftwareTimerConfigure();                                                     // Initialize Software Timer
@@ -626,7 +626,7 @@ void InitSystem(void)
 
   // Start timers in "UP" mode.
   TimerEnable(__BSP_TIMER1, UP_MODE);                                           // Start the timer prior to enabling interrupts
-  TimerEnable(__BSP_TIMER2, UP_MODE);                                           // Start the timer prior to enabling interrupts
+//  TimerEnable(__BSP_TIMER2, UP_MODE);                                           // Start the timer prior to enabling interrupts
 
   // Enable interrupts now that microcontroller is ready for normal operation.
   __BSP_ENABLE_INTERRUPT();
