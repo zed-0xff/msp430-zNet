@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>2716356184</fileChecksum>
+  <configuration>
+    <name>EZ430_CC1101</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\src\Application\Application.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Application.h</file>
+      <file>$PROJ_DIR$\..\src\Application\Callback.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Callback.h</file>
+      <file>$PROJ_DIR$\..\src\Application\CommandInterface.c</file>
+      <file>$PROJ_DIR$\..\src\Application\CommandInterface.h</file>
+      <file>$PROJ_DIR$\..\src\Application\Definitions.h</file>
+      <file>$PROJ_DIR$\..\src\Application\main.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Protocol.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Protocol.h</file>
+      <file>$PROJ_DIR$\..\src\Application\RadioOperation.c</file>
+      <file>$PROJ_DIR$\..\src\Application\RadioOperation.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430Config.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430Drivers.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLite.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPad.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Board.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\BoardDrivers.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\ADC\ADC.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Flash\Flash.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\LED\LED.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\PushButton\PushButton.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\PushButton\PushButton.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\CCXXXConfig.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Model\CC1101.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\Radio.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\Radio.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\RadioStruct.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Random\Random.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\SPI\SPI.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\Timer.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimerStruct.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\UART\UART.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Watchdog\Watchdog.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\EventHandling\EventHandling.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\EventHandling\EventHandling.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\RandomNumberGenerator\RandomNumberGenerator.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\RandomNumberGenerator\RandomNumberGenerator.s43</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Model\G2553.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\BasicClockModulePlus\BasicClockModulePlus.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\FlashModule\FlashModule.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\FlashModule\FlashModule.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\USCI\USCI.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\USCI\USCI.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\DigitalIO\DigitalIO.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\DigitalIO\DigitalIO.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerA\TimerA.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerA\TimerA.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerB\TimerB.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerB\TimerB.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\WatchdogTimerPlus\WatchdogTimerPlus.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\WatchdogTimerPlus\WatchdogTimerPlus.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Config.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\HAL.h</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Application.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\CommandInterface.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\ADC10.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\CircularBuffer.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Radio.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\SoftwareTimer.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\EventHandling.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\FlashModule.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\USCI.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Communication.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\CC1101Interface.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\PushButton.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\LaunchPad.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\AIRBoosterPackLite.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\EZ430.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\RadioOperation.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Protocol.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\CommandInterface.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Callback.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Application.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\RandomNumberGenerator.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\WatchdogTimerPlus.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\TimerB.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\TimerA.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\DigitalIO.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\ADC10.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Communication.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\USCI.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\FlashModule.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\EventHandling.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\CircularBuffer.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\SoftwareTimer.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Radio.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\CC1101Interface.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\PushButton.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\LaunchPad.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\AIRBoosterPackLite.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\EZ430.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\RadioOperation.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Protocol.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\main.r43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\Callback.r43</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\GPIO.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\Timer.h</file>
+      <file>$PROJ_DIR$\..\src\Library\A1101RxxStruct.h</file>
+      <file>$PROJ_DIR$\..\src\Library\A1101R09SettingsFCC.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430g2553.h</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\zSensor.pbd</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\TimerA.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\WatchdogTimerPlus.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\DigitalIO.pbi</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Exe\zSensor.d43</file>
+      <file>$PROJ_DIR$\EZ430_CC1101\Obj\TimerB.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\CommonDefinitions.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\assert.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\Architecture.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\DataConverter.h</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 118</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\Application.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 86</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 66</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111 5 3</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111 5 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\Callback.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 85</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 108</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 5 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 5 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\CommandInterface.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 67</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 5 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 83</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 107</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111 5 3</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111 5 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\Protocol.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 82</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 106</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 9 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 11 6 112 111 1 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 9 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 11 6 112 111 1 5</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\RadioOperation.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 81</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 105</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111 5</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 18 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 19 15 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26 6 9 11 112 111 5</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 104</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 15 39 19 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 13 14 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 15 39 19 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLite.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 103</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPad.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 78</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 102</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\PushButton\PushButton.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 77</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 101</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 24 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 35 37 36 20 22 38 32 33 30 31 27 28 26</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 24 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 35 37 36 20 22 38 32 33 30 31 27 28 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 76</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 100</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 26 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\Radio\Radio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 99</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 35 37 36 20 22 38 24 32 33 30 31 27 28 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 98</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35 37 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 36 20 22 38 24 32 33 30 31 27 28 26</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 35 37 19 15 65 122 121 123 64 41 43 44 46 113 120 47 49 51 55 57 59 63 124 53 125 109 110 13 14 39 21 36 20 22 38 24 32 33 30 31 27 28 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 97</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 41 121</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 41 121</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\Common\EventHandling\EventHandling.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 72</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 96</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 43 122 121 123 64 41 44 46 113 120 47 49 51 55 57 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 43 122 121 123 64 41 44 46 113 120 47 49 51 55 57 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\Common\RandomNumberGenerator\RandomNumberGenerator.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 87</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>A430</name>
+          <file> 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\FlashModule\FlashModule.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 73</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 95</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49 64 122 121 123 41 43 44 46 113 120 47 51 55 57 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 49 64 122 121 123 41 43 44 46 113 120 47 51 55 57 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\USCI\USCI.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 94</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 51 64 122 121 123 41 43 44 46 113 120 47 49 55 57 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 51 64 122 121 123 41 43 44 46 113 120 47 49 55 57 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 75</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 93</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 68</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 92</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 55 64 122 121 123 41 43 44 46 113 120 47 49 51 57 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 55 64 122 121 123 41 43 44 46 113 120 47 49 51 57 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\DigitalIO\DigitalIO.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 117</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 91</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 57 64 122 121 123 41 43 44 46 113 120 47 49 51 55 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 57 64 122 121 123 41 43 44 46 113 120 47 49 51 55 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerA\TimerA.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 115</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 90</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 59 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 59 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerB\TimerB.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 119</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 89</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 59 63</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 61 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 59 63</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\WatchdogTimerPlus\WatchdogTimerPlus.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 116</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 88</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 63 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 59</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 63 64 122 121 123 41 43 44 46 113 120 47 49 51 55 57 59</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\EZ430_CC1101\Obj\zSensor.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 68 79 86 76 85 69 84 75 117 80 72 73 78 82 77 70 81 71 115 119 74 116 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>EZ430_CC110L</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>EZ430_CC2500</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>LaunchPad_CC1101</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>LaunchPad_CC110L_ETSI</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>LaunchPad_CC110L_FCC</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\src\Library\IAR\AIRRadioSettingFCC.r43</file>
+      <file>$PROJ_DIR$\..\src\Application\Application.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Application.h</file>
+      <file>$PROJ_DIR$\..\src\Application\Callback.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Callback.h</file>
+      <file>$PROJ_DIR$\..\src\Application\CommandInterface.c</file>
+      <file>$PROJ_DIR$\..\src\Application\CommandInterface.h</file>
+      <file>$PROJ_DIR$\..\src\Application\Definitions.h</file>
+      <file>$PROJ_DIR$\..\src\Application\main.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Protocol.c</file>
+      <file>$PROJ_DIR$\..\src\Application\Protocol.h</file>
+      <file>$PROJ_DIR$\..\src\Application\RadioOperation.c</file>
+      <file>$PROJ_DIR$\..\src\Application\RadioOperation.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLite.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLite.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLiteConfig.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLiteDrivers.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPad.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPad.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPadConfig.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPadDrivers.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\Board.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\BSP\BoardDrivers.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\ADC\ADC.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Flash\Flash.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\LED\LED.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\PushButton\PushButton.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\PushButton\PushButton.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\CCXXXConfig.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Model\CC110L.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\Radio.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\Radio.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Radio\RadioStruct.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Random\Random.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\SPI\SPI.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\Timer.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimerStruct.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\UART\UART.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\Drivers\Watchdog\Watchdog.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\EventHandling\EventHandling.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\EventHandling\EventHandling.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\RandomNumberGenerator\RandomNumberGenerator.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\RandomNumberGenerator\RandomNumberGenerator.s43</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Model\G2553.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\BasicClockModulePlus\BasicClockModulePlus.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\FlashModule\FlashModule.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\FlashModule\FlashModule.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\USCI\USCI.c</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\EZ430.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\AIRBoosterPackLite.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\LaunchPad.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\PushButton.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\CC1101Interface.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Radio.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\SoftwareTimer.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\CircularBuffer.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\EventHandling.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\FlashModule.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\USCI.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Communication.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\ADC10.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\DigitalIO.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\TimerA.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\TimerB.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\WatchdogTimerPlus.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\RandomNumberGenerator.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Application.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Callback.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\CommandInterface.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Protocol.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\RadioOperation.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\EZ430.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\AIRBoosterPackLite.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\LaunchPad.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\PushButton.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\CC1101Interface.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Radio.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\SoftwareTimer.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\CircularBuffer.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\EventHandling.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\FlashModule.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\USCI.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Communication.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\ADC10.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\DigitalIO.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\TimerA.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\TimerB.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\WatchdogTimerPlus.pbi</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Exe\zSensor.d43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\zSensor.pbd</file>
+      <file>$TOOLKIT_DIR$\config\lnk430G2553.xcl</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl430f.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\List\zSensor.map</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\USCI\USCI.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\DigitalIO\DigitalIO.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\DigitalIO\DigitalIO.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerA\TimerA.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerA\TimerA.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerB\TimerB.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerB\TimerB.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\WatchdogTimerPlus\WatchdogTimerPlus.c</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\WatchdogTimerPlus\WatchdogTimerPlus.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Config.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\HAL.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\GPIO.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\Timer.h</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\RadioOperation.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Callback.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Application.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\CommandInterface.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\Protocol.r43</file>
+      <file>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\main.r43</file>
+      <file>$TOOLKIT_DIR$\inc\msp430g2553.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\Common\CommonDefinitions.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\assert.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\Architecture.h</file>
+      <file>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\DataConverter.h</file>
+      <file>$PROJ_DIR$\..\src\Library\A110LRxxStruct.h</file>
+      <file>$PROJ_DIR$\..\src\Library\A110LR09SettingsFCC.h</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 96 100</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\Application.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 73</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 120</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131 6 4</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131 6 4</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\Callback.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 119</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 4 6 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 4 6 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\CommandInterface.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 75</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 121</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 6 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 76</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 123</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131 6 4</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131 6 4</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\Protocol.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 77</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 122</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 12 7 132 131 2 6</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 10 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 12 7 132 131 2 6</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Application\RadioOperation.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 78</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 118</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131 6</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 2 22 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 15 16 23 21 43 25 39 41 40 24 26 42 28 36 17 37 34 35 31 32 30 7 10 12 132 131 6</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\BSP\Boards\EZ430\EZ430.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 55</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\AIRBoosterPackLite\AIRBoosterPackLite.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 56</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 15 16 17 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 37 23 21 19 20 43 25 39 41 40 24 26 42 28 36 34 35 31 32 30</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 15 16 17 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 37 23 21 19 20 43 25 39 41 40 24 26 42 28 36 34 35 31 32 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\BSP\Boards\LaunchPad\LaunchPad.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 81</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 57</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 21 43 23 17 15 16 37 34 35 31 32 30 25 39 41 40 24 26 42 28 36</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 19 20 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 21 43 23 17 15 16 37 34 35 31 32 30 25 39 41 40 24 26 42 28 36</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\PushButton\PushButton.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 82</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 58</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 39 41 40 24 26 42 36 17 15 16 37 34 35 31 32 30</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 28 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 39 41 40 24 26 42 36 17 15 16 37 34 35 31 32 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 83</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 59</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 39 41 40 24 26 42 28 36 17 15 16 37 34 35 31 32</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 30 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 39 41 40 24 26 42 28 36 17 15 16 37 34 35 31 32</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\Radio\Radio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 60</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 39 41 40 24 26 42 28 36 17 15 16 37 34 35 31 32 30</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 39 41 40 24 26 42 28 36 17 15 16 37 34 35 31 32 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 85</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 61</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39 41 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 40 24 26 42 28 36 17 15 16 37 34 35 31 32 30</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 39 41 23 21 115 127 126 128 114 45 47 48 50 124 125 51 53 101 105 107 109 113 129 103 130 116 117 19 20 43 25 40 24 26 42 28 36 17 15 16 37 34 35 31 32 30</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 86</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45 126</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 45 126</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\Common\EventHandling\EventHandling.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 87</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 63</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47 127 126 128 114 45 48 50 124 125 51 53 101 105 107 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 47 127 126 128 114 45 48 50 124 125 51 53 101 105 107 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\Common\RandomNumberGenerator\RandomNumberGenerator.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 72</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>A430</name>
+          <file> 124</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Architecture\FlashModule\FlashModule.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 88</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 64</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 53 114 127 126 128 45 47 48 50 124 125 51 101 105 107 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 53 114 127 126 128 45 47 48 50 124 125 51 101 105 107 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\USCI\USCI.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 89</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 65</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 101 114 127 126 128 45 47 48 50 124 125 51 53 105 107 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 101 114 127 126 128 45 47 48 50 124 125 51 53 105 107 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\LaunchPad_CC110L_FCC\Exe\zSensor.d43</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 100</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 98 67 56 120 59 119 62 121 66 68 55 63 64 57 122 58 60 118 72 61 69 70 65 71 123 0 99</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\LaunchPad_CC110L_FCC\Obj\zSensor.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 91 80 73 83 74 86 75 90 92 79 87 88 81 77 82 84 78 85 93 94 89 95 76</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 90</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 66</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 103 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 91</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 67</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 105 114 127 126 128 45 47 48 50 124 125 51 53 101 107 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 105 114 127 126 128 45 47 48 50 124 125 51 53 101 107 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\GPIO\DigitalIO\DigitalIO.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 92</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 68</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 107 114 127 126 128 45 47 48 50 124 125 51 53 101 105 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 107 114 127 126 128 45 47 48 50 124 125 51 53 101 105 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerA\TimerA.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 93</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 69</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 109 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 109 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\TimerB\TimerB.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 94</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 70</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 111 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 109 113</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 111 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 109 113</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\Framework\HAL\MSP430\Peripherals\Timer\WatchdogTimerPlus\WatchdogTimerPlus.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 113 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 109</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 113 114 127 126 128 45 47 48 50 124 125 51 53 101 105 107 109</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>LaunchPad_CC2500</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+
