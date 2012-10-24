@@ -40,47 +40,6 @@ volatile unsigned char swTimerAction = 0;                                       
 LEDStateControl greenLEDStateControl = {0,0,0,0};                               //!< Initialize green LED state controls.                          
 LEDStateControl redLEDStateControl = {0,0,0,0};                                 //!< Initialize red LED state controls.   
 
-/**
- * @fn void LEDControl(unsigned char led, LEDStateControl * s_LEDStateControl)
- *
- * @brief This function controls the LED outputs.
- *        While the button is pressed or software timer 0 is running, blink the 
- *        LED at the rate specified. Otherwise restore the state from before the
- *        button press. blinkPeriod specifies the blink period in 10ms increments 
- *        while onTime specifies the amount of time (10ms increments) the LED is
- *        on during that period. For example, setting blinkPeriod to 100 and onTime 
- *        to 10 will result in a 1000ms period with the LED on for 100ms 
- *        (i.e. on for 100ms, off for 900ms)
- *
- * @param led an unsigned char
- * @param pLEDStateControl a LEDStateControl structure pointer
- */
-void LEDControl(unsigned char led, LEDStateControl * pLEDStateControl)
-{
-  if (pLEDStateControl->blinkPeriod)
-  {
-    if (((pushButtonTimer.clickHold == PUSHBUTTON_HOLD) ? pushButtonTimer.count : SoftwareTimerGetCount(__BSP_SWTIMER[0])) % pLEDStateControl->blinkPeriod < pLEDStateControl->onTime)
-    {
-      LEDOn(led);
-    }
-    else
-    {
-      LEDOff(led);
-    }
-  }
-  else if (pLEDStateControl->restorePrevious)
-  {
-    pLEDStateControl->restorePrevious = 0;
-    if (pLEDStateControl->previousState)
-    {
-      LEDOn(led);
-    }
-    else
-    {
-      LEDOff(led);
-    }
-  }
-}
 
 /**
  * @fn unsigned char ADCEventHandler(const void * params)
@@ -232,143 +191,7 @@ unsigned char Timer1CCREventHandler(const void * params)
  */
 unsigned char Timer2CCREventHandler(const void * params)
 {
-  // Get event parameters.
-  EventParameters * p = (EventParameters *) params;
-  static unsigned char previousClickHoldState = 0;
-
-  // Check event type.
-  if (p->event == __BSP_TIMER2_CCR0_EVENT)
-  {
-    // Scan for a change in long button press status.  The code inside this IF statement
-    // should only execute once following a long button press and once again following release.
-    if (previousClickHoldState != pushButtonTimer.clickHold)
-    {
-      // The button was just pressed ...
-      if (pushButtonTimer.clickHold == PUSHBUTTON_HOLD)
-      {
-        // Store the previous LED states so that we can change the LEDs while the button is held
-        greenLEDStateControl.previousState = LEDState(__BSP_LEDGREEN1);
-        redLEDStateControl.previousState = LEDState(__BSP_LEDRED1);
-      }
-      // The button was just released ...
-      else
-      {
-        // Set flags to indicate the LEDs should be returned to their states prior to the button press
-        greenLEDStateControl.restorePrevious = 1;
-        redLEDStateControl.restorePrevious = 1;
-      }
-    }
-
-    // Update the LED outputs
-    LEDControl(__BSP_LEDGREEN1, &greenLEDStateControl);
-    LEDControl(__BSP_LEDRED1, &redLEDStateControl);
-
-    // Blink the LEDs with different patterns while the button is held
-    if (pushButtonTimer.clickHold == PUSHBUTTON_HOLD)
-    {
-      // holdCount does not include first timeout period which is added after button is released.
-      if (pushButtonTimer.holdCount > FLASH_FACTORY_DEFAULT_TIME + __BSP_CONFIG_PUSHBUTTON_CLICK_TIMEOUT)
-      {
-        greenLEDStateControl.blinkPeriod  = FLASH_FACTORY_DEFAULT_GREEN_LED_BLINK_RATE;
-        greenLEDStateControl.onTime       = FLASH_FACTORY_DEFAULT_GREEN_LED_ON_TIME;
-        redLEDStateControl.blinkPeriod    = FLASH_FACTORY_DEFAULT_RED_LED_BLINK_RATE;
-        redLEDStateControl.onTime         = FLASH_FACTORY_DEFAULT_RED_LED_ON_TIME;
-      }
-      else if (pushButtonTimer.holdCount > ENABLE_PAIRING_HUB_TO_SENSOR_TIME + __BSP_CONFIG_PUSHBUTTON_CLICK_TIMEOUT)
-      {
-        greenLEDStateControl.blinkPeriod  = ENABLE_PAIRING_HUB_TO_SENSOR_GREEN_LED_BLINK_RATE;
-        greenLEDStateControl.onTime       = ENABLE_PAIRING_HUB_TO_SENSOR_GREEN_LED_ON_TIME;
-        redLEDStateControl.blinkPeriod    = ENABLE_PAIRING_HUB_TO_SENSOR_RED_LED_BLINK_RATE;
-        redLEDStateControl.onTime         = ENABLE_PAIRING_HUB_TO_SENSOR_RED_LED_ON_TIME;
-      }
-      else if (pushButtonTimer.holdCount > ENABLE_PAIRING_TIME - __BSP_CONFIG_PUSHBUTTON_CLICK_TIMEOUT)
-      {
-        greenLEDStateControl.blinkPeriod  = ENABLE_PAIRING_GREEN_LED_BLINK_RATE;
-        greenLEDStateControl.onTime       = ENABLE_PAIRING_GREEN_LED_ON_TIME;
-        redLEDStateControl.blinkPeriod    = ENABLE_PAIRING_RED_LED_BLINK_RATE;
-        redLEDStateControl.onTime         = ENABLE_PAIRING_RED_LED_ON_TIME;
-      }
-    }
-    // Maintain the blink settings while the software timer keeps the node in pairing mode
-    else
-    {
-      if ((pushButtonAction == FLASH_FACTORY_DEFAULT) || (__BSP_SWTIMER[0].enable == 0))
-      {
-        greenLEDStateControl.blinkPeriod  = 0;
-        redLEDStateControl.blinkPeriod    = 0;
-      }
-      else if (pushButtonAction == ENABLE_PAIRING_HUB_TO_SENSOR)
-      {
-        greenLEDStateControl.blinkPeriod  = ENABLE_PAIRING_HUB_TO_SENSOR_GREEN_LED_BLINK_RATE;
-        greenLEDStateControl.onTime       = ENABLE_PAIRING_HUB_TO_SENSOR_GREEN_LED_ON_TIME;
-        redLEDStateControl.blinkPeriod    = ENABLE_PAIRING_HUB_TO_SENSOR_RED_LED_BLINK_RATE;
-        redLEDStateControl.onTime         = ENABLE_PAIRING_HUB_TO_SENSOR_RED_LED_ON_TIME;
-      }
-      else if (pushButtonAction == ENABLE_PAIRING)
-      {
-        greenLEDStateControl.blinkPeriod  = ENABLE_PAIRING_GREEN_LED_BLINK_RATE;
-        greenLEDStateControl.onTime       = ENABLE_PAIRING_GREEN_LED_ON_TIME;
-        redLEDStateControl.blinkPeriod    = ENABLE_PAIRING_RED_LED_BLINK_RATE;
-        redLEDStateControl.onTime         = ENABLE_PAIRING_RED_LED_ON_TIME;
-      }
-    }
-
-    previousClickHoldState = pushButtonTimer.clickHold;
-  }
-  else if(p->event & __BSP_TIMER2_CCR1_EVENT)
-  {
-  }
-  else if(p->event & __BSP_TIMER2_CCR2_EVENT)
-  {
-  }
-
   return EVENT_NO_ACTION;
-}
-
-/**
- * @fn unsigned char PushButton1EventHandler(const void * params)
- *
- * @brief This function is an extension of ISR for Push Button event.
- * 
- * @param params a constant void pointer
- *
- * @return an unsigned character
- */
-unsigned char PushButton1EventHandler(const void * params)
-{
-  if (pushButtonTimer.clickHold == PUSHBUTTON_CLICK)
-  {
-    switch (pushButtonTimer.clickCount)
-    {
-      case 1:                                                                   //!< Single click
-        pushButtonAction = ACTIVATE_ALARM;
-        break;
-      case 2:                                                                   //!< Double click
-        pushButtonAction = GET_APPLICATION_STATE;
-        break;
-      case 3:                                                                   //!< Triple click
-        pushButtonAction = NEXT_APPLICATION_STATE;
-        break;
-      default: break;
-    }
-  }
-  else
-  {
-    if (pushButtonTimer.holdCount > FLASH_FACTORY_DEFAULT_TIME)
-    {
-      pushButtonAction = FLASH_FACTORY_DEFAULT;
-    }
-    else if (pushButtonTimer.holdCount > ENABLE_PAIRING_HUB_TO_SENSOR_TIME)
-    {
-      pushButtonAction = ENABLE_PAIRING_HUB_TO_SENSOR;
-    }
-    else if (pushButtonTimer.holdCount > ENABLE_PAIRING_TIME)
-    {
-      pushButtonAction = ENABLE_PAIRING;
-    }
-  }
-
-  return EVENT_WAKE_UP;
 }
 
 /**
@@ -383,22 +206,7 @@ unsigned char PushButton1EventHandler(const void * params)
 unsigned char SWTimer0EventHandler(const void * params)
 {
   swTimerAction = DISABLE_PAIRING;
-  greenLEDStateControl.blinkPeriod  = 0;
-  redLEDStateControl.blinkPeriod    = 0;
   
   return EVENT_NO_ACTION;
 }
 
-///**
-// * @fn unsigned char SWTimer1EventHandler(const void * params)
-// *
-// * @brief Software Timer1 Event Handler.
-// * 
-// * @param params a constant void pointer
-// *
-// * @return an unsigned character
-// */
-//unsigned char SWTimer1EventHandler(const void * params)
-//{
-//  return EVENT_WAKE_UP;
-//}

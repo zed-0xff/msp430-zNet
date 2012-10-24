@@ -713,7 +713,8 @@ void InitSystem(void)
   // Halt the watchdog.
   WatchdogHold();                                                               // Stop the watchdog timer
  
-  Nodes[0].ID = CreateRandomAddress();                                          // Generate a random address.  This must be done
+//  Nodes[0].ID = CreateRandomAddress();                                          // Generate a random address.  This must be done
+  Nodes[0].ID = 0x53535353;                                          // Generate a random address.  This must be done
                                                                                 // before the clocks and ADC are initialized.
   // Setup board clock system.
   BoardClockSystemInit();                                                       // Intialize the system clocks
@@ -721,7 +722,7 @@ void InitSystem(void)
   SetOFIFGBit(0);                                                               // Clear Osc Fault interrupt flag
 
   FCTL2 = FWKEY | FSSEL_1 | 19;
-  SetMyNodeID(0);                                                               // Set node ID. The Flash block requires the clock
+//  SetMyNodeID(0);                                                               // Set node ID. The Flash block requires the clock
                                                                                 // to be configured prior to calling this function.
   // Setup timers.
   TimerConfigure(__BSP_TIMER1);                                                 // Initialize Timer1
@@ -745,12 +746,12 @@ void InitSystem(void)
   AttachEvent(__BSP_UART1_RX_EVENT_HANDLE, UARTRXEventHandler);                 // Attach UART RX event handler
 
   // Setup LEDs.
-  LEDConfigure(__BSP_LEDRED1);                                                  // Initialize the Red LED
-  LEDConfigure(__BSP_LEDGREEN1);                                                // Initialize the Green LED
+  //LEDConfigure(__BSP_LEDRED1);                                                  // Initialize the Red LED
+  //LEDConfigure(__BSP_LEDGREEN1);                                                // Initialize the Green LED
 
   // Setup push button.
-  PushButtonConfigure(__BSP_PUSHBUTTON1);                                       // Initialize push button.
-  AttachEvent(__BSP_PUSHBUTTON1_EVENT_HANDLE, PushButton1EventHandler);
+  //PushButtonConfigure(__BSP_PUSHBUTTON1);                                       // Initialize push button.
+  //AttachEvent(__BSP_PUSHBUTTON1_EVENT_HANDLE, PushButton1EventHandler);
   
   AttachEvent(__BSP_PORT1_EVENT_HANDLE, PortEventHandler);
   AttachEvent(__BSP_PORT2_EVENT_HANDLE, PortEventHandler);
@@ -784,18 +785,10 @@ void InitSystem(void)
  */
 void InitApplication(unsigned long addr) 
 {
-  #ifdef INCLUDE_FLASH_STORAGE
+ #ifdef INCLUDE_FLASH_STORAGE
   InitFlashStorage();
-
-  // Verify that a valid application state is stored in flash.
-  if((MyFlashStorage.myAppState == HUB) || (MyFlashStorage.myAppState == SENSOR)) {
-    // Get application state from flash
-    ApplicationState = MyFlashStorage.myAppState;
-  } else {
-    // Set the default application state.
-    SetApplicationState(HUB);
-  }
-  #endif
+#endif
+  SetApplicationState(SENSOR);
   InitProtocol();                                                               // Initialize Protocol 
   SetPairingMask(DEFAULT_PAIRING_MASK);                                         // Set pairing mask
 }
