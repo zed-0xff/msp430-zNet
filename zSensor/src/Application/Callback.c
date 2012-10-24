@@ -34,7 +34,6 @@
 #include "Callback.h"
 
 volatile unsigned char ADCConversionDone = 0;                                            //!< Flag to indicate that ADC conversion is done.
-volatile unsigned char pushButtonAction = 0;                                             //!< Specify push button action based on the press type.
 volatile unsigned char swTimerAction = 0;                                                //!< Specify software timer action.
 
 LEDStateControl greenLEDStateControl = {0,0,0,0};                               //!< Initialize green LED state controls.                          

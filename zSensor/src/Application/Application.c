@@ -1,40 +1,3 @@
-/**
- *  @file Application.c
- *
- *  @brief Application Layer Function Definitions
- *         This file defines the functions for Application-State Operations, 
- *         Network Setup and Validation.
- *         Function definitions for Application Layer Command-Interface are 
- *         included within this file.
- *
- *  @version  1.0
- *
- *  @attention IMPORTANT: Your use of this Software is limited to those specific 
- *             rights granted under the terms of a software license agreement 
- *             between the user who downloaded the software, his/her employer 
- *             (which must be your employer) and Anaren (the "License"). You may
- *             not use this Software unless you agree to abide by the terms of 
- *             the License. The License limits your use, and you acknowledge,
- *             that the Software may not be modified, copied or distributed unless
- *             in connection with an authentic Anaren product. Other than for the 
- *             foregoing purpose, you may not use, reproduce, copy, prepare 
- *             derivative works of, modify, distribute, reverse engineer, decompile,
- *             perform, display or sell this Software and/or its documentation 
- *             for any purpose. 
- *             YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION
- *             ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS 
- *             OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY  WARRANTY OF 
- *             MERCHANTABILITY, TITLE, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR 
- *             PURPOSE. IN NO EVENT SHALL ANAREN OR ITS LICENSORS BE LIABLE OR
- *             OBLIGATED UNDER CONTRACT, NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION,
- *             BREACH OF WARRANTY, OR OTHER LEGAL EQUITABLE THEORY ANY DIRECT OR 
- *             INDIRECT DAMAGES OR EXPENSES INCLUDING BUT NOT LIMITED TO ANY 
- *             INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR CONSEQUENTIAL DAMAGES, 
- *             LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF SUBSTITUTE GOODS,
- *             TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES (INCLUDING BUT
- *             NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS. 
- */
-
 #include "Application.h"
 #include "Callback.h"
 
@@ -47,7 +10,7 @@
   #endif  //__IAR_SYSTEMS_ICC__
 #endif  //INCLUDE_FLASH_STORAGE
   
-volatile __ApplicationState ApplicationState = HUB;
+volatile __ApplicationState ApplicationState = SENSOR;
 
 /*! The pairingMask is used as a mask to all AddNodeIDToNetwork() calls. A zero 
   mask will not allow any nodes to be added to the network (paired) and 
@@ -82,60 +45,6 @@ uint8_t WirelessOperation(unsigned int * pBuffer)
 {
   s_AppRadio * pRadio = &appRadio[RadioLocal.currentRadio];
 
-  // ----------- Check for the PushButton input ------------
-  if (pushButtonAction)
-  {
-    switch (pushButtonAction)
-    {
-      unsigned char i;
-
-      case FLASH_FACTORY_DEFAULT :
-        for(i=0;i<MAX_NODES;i++){                                               // Remove all the nodes from paired nodes list, so that when the GUI reads the nodes list, 
-          RemoveNodeFromNetwork(i);                                             // it sees the network change and updates according to it.
-        }
-        ChangeConfiguration(&pRadio, 0, 0, 0, 0, 0);
-        // If GUI sees an application state change, it reads the nodes list and updates the network change itself. 
-        // This works if the application state is sensor and is changed to hub. But if the application state is
-        // already hub, the GUI does not see any state change and it does not update the network change itself. 
-        // So this condition is placed to make sure that the network gets updated. (for GUI).
-        if (ApplicationState == HUB)                                            
-        {
-          #if defined(__COMMAND_INTERFACE)
-            NetworkChanged();                                                   // Report to GUI that the netowrk has been changed.
-            PhysicalChanged();                                                  // Report to GUI that the RSCP settings have been changed.
-          #endif
-        }
-        SetApplicationState(HUB);
-        break;
-
-      case ENABLE_PAIRING_HUB_TO_SENSOR :                                       // Change application state to sensor and place it in pairing mode immediately.
-        SetApplicationState(SENSOR);
-		// NOTE: Fall through to pair the devices.
-      case ENABLE_PAIRING :
-        SetPairingMask(0xFFFFFFFF);
-        SoftwareTimerSetInterval(__BSP_SWTIMER[0], 1000);                       // Set 10 second timeout
-        SoftwareTimerEnable(__BSP_SWTIMER[0]);
-        break;
-
-      case NEXT_APPLICATION_STATE :
-        for (i=1;i<MAX_NODES;i++) {
-          RemoveNodeFromNetwork(i);                                             // Remove all the nodes from paired nodes list
-        }
-        if (ApplicationState == HUB) SetApplicationState(SENSOR);
-        else if(ApplicationState == SENSOR) SetApplicationState(HUB);
-		// NOTE: Fall through to display state change with LEDs.
-      case GET_APPLICATION_STATE :
-        if (ApplicationState == HUB) BlinkLED(__BSP_LEDRED1, 2, 20);
-        else if(ApplicationState == SENSOR) BlinkLED(__BSP_LEDRED1, 3, 20);
-        break;
-
-      default :
-        break;
-    }
-    
-    pushButtonAction = 0;
-  }
-
   if (swTimerAction == DISABLE_PAIRING)
   {
     SoftwareTimerDisable(__BSP_SWTIMER[0]);
@@ -146,59 +55,7 @@ uint8_t WirelessOperation(unsigned int * pBuffer)
     }
   }
 
-
-  if(ApplicationState == HUB)
-  {
-    return HubWirelessOperation(pRadio, pBuffer);
-  }
-  else if(ApplicationState == SENSOR)
-  {
-    return SensorWirelessOperation(pRadio, pBuffer);
-  }
-  return 0;
-}
-
-/**
- * @fn uint8_t HubWirelessOperation(s_AppRadio * pRadio, unsigned int * pBuffer)
- *
- * @brief This function listens for incoming frames, qualifies the data as 
- *        being from a network member, and if so copies data to Nodes[].InData[]
- *        and returns the node IDindex that it came from
- *
- * @param pRadio an s_AppRadio structure pointer
- * @param pBuffer an unsigned integer pointer
- *
- * @return an unsigned int, IDindex; >0 is valid, =0 is invalid/no data
- */
-uint8_t HubWirelessOperation(s_AppRadio * pRadio, unsigned int * pBuffer)
-{
-  uint8_t IDindex;
-  uint8_t ByteCount;
-
-  Payloads[NODE_ACK_TEMP_FRAME].Data[0] = (pBuffer[0] & 0xFFF0) | (pBuffer[2] & 0x0001);   // my own AnalogInput | DigitalInput
-  Payloads[NODE_ACK_TEMP_FRAME].Data[1] = (pBuffer[3] & 0xFFF0) | (pBuffer[1] & 0x0001);   // my own AnalogOutput | DigitalOutput
-
-  if (Listen(pRadio, (uint8_t *)&Payloads[0], &ByteCount)) {                    // Listen for a packet from remote (sensor/actuator)
-    //We should perhaps check here if we got a full payload?
-    IDindex = NetworkValidation(&Payloads[INCOMING_FRAME]);                     // Data from the radio is available, check if its from a member, if so copy the data and return the node index it came from.
-    if (IDindex){
-      //If there is a need, do something with the data here. Populate the user's buffer with the data
-
-      if(Payloads[INCOMING_FRAME].Data[2] & 0x0004){                            // If there is new data(for PWM) from the remote module's GUI
-        Nodes[0].Data[3] = Payloads[INCOMING_FRAME].Data[2] & 0xFFF0;           // Mask of the bit for new data, because it is not needed any more.
-      }                                                                         // Else use old data
-      pBuffer[3] = Nodes[0].Data[3];                                            
-
-      if(Payloads[INCOMING_FRAME].Data[2] & 0x0002){                            // If there is new data(for green LED) from the remote module's GUI
-        Nodes[0].Data[1] = Payloads[INCOMING_FRAME].Data[2] & 0x0001;           // Mask of the bit for new data, because it is not needed any more.
-      }                                                                         // Else use old data
-      pBuffer[1] = Nodes[0].Data[1];                                          
-      Payloads[NODE_ACK_TEMP_FRAME].Data[2] = 0x0000;                           // Clear the field as the same buffer is used for outgoing frames to all the paired modules.      
-
-      return IDindex;                                                           // Allow main() to be notified of the newly arrived data, which is now in Nodes[].InData[]
-    }
-  }
-  return 0;                                                                     // There is no data or it was not from a network member
+  return SensorWirelessOperation(pRadio, pBuffer);
 }
 
 /**
@@ -794,26 +651,6 @@ void InitApplication(unsigned long addr)
 }
 
 /**
- * @fn void BlinkLED(unsigned char led, unsigned char count, unsigned char delay)
- *
- * @brief Blink the LED based on specified delay.
- * 
- * @param led an unsigned char
- * @param count an unsigned char
- * @param delay an unsigned char
- */
-void BlinkLED(unsigned char led, unsigned char count, unsigned char delay)
-{
-  unsigned tempVar;
-
-  for (tempVar=0;tempVar<count*2;tempVar++)
-  {
-    LEDToggle(led);
-    Delay(delay);
-  }
-}
-
-/**
  * @fn void Query_Current_Status(s_AppRadio * pRadio, PayloadFrame *payload)
  *
  * @brief This function checks if its the time to report the status. If yes, 
@@ -879,28 +716,4 @@ unsigned char SetCycleTime(s_AppRadio * pRadio, unsigned char ID, unsigned int n
   // New value is presented in milliseconds, so multiply by 12 since timer tick is 12kHz, then divide by 2 since timer toggle output drives ADC (sample rate is half timer cycle)
   TimerSetCCR(__BSP_TIMER1, __BSP_TIMER1_CCR0, Nodes[0].CurrentCycleTime * 6);
   return 1;
-}
-
-/**
- * @fn void Alarm(unsigned int * pBuffer)
- *
- * @brief Alarm implementation
- *
- * @param pBuffer an unsigned integer pointer
- */
-void Alarm(unsigned int * pBuffer)
-{
-  unsigned int r = 0;
-  unsigned char i;
-  for (i=1;i<MAX_NODES;i++) {
-    if (Nodes[i].ID) {                                                          // Is it a valid network member
-      r |= Nodes[i].Data[2] & 0x8000;                                           // 'OR' all red LED's (alarm)
-    }
-  }
-  Nodes[0].Data[2] = (Nodes[0].Data[2] & (~0x8000)) | r;                        // Update our local copy for a red LED Alarm
-  if (r) {                                                                      // Write to the HW the red LED (redundant)
-    LEDOn(__BSP_LEDRED1);
-  } else {
-    LEDOff(__BSP_LEDRED1);
-  }
 }
