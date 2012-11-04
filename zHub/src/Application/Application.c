@@ -266,7 +266,8 @@ unsigned char NetworkValidation(PayloadFrame * AppFrame)
     i = NodeIsInMyNet(AppFrame->NodeID);                                        // Else node is already in the net
   }
   if (i) {
-      Nodes[i].Data[0] = AppFrame->Data[0] & 0xFFF0;                            // Temperature of the remote unit.
+//      Nodes[i].Data[0] = AppFrame->Data[0] & 0xFFF0;                            // Temperature of the remote unit.
+      Nodes[i].Data[0] = AppFrame->Data[0]; // ZZZ: copy raw remote data
       Nodes[i].Data[2] = AppFrame->Data[0] & 0x000F;                            // State of red LED of the remote unit.
       Nodes[i].Data[3] = AppFrame->Data[1] & 0xFFF0;                            // PWM of the remote unit.
       Nodes[i].Data[1] = AppFrame->Data[1] & 0x000F;                            // State of green LED of the remote unit.
@@ -587,19 +588,8 @@ unsigned char RemoveNodeFromNetwork(unsigned char NodeIndex)
  */
 void InitFlashStorage(void)
 {
-  #ifdef INCLUDE_FLASH_STORAGE
-    unsigned char i;
-    unsigned long tempNodeID;
-    
-    for (i=1;i<MAX_NODES;i++){
-      tempNodeID = ReadMyFlashedPairedID(i);
-      if(tempNodeID == 0xFFFFFFFF)
-        WriteMyFlashedPairedID(i,Nodes[i].ID);                                  // Writes zeroes to the location of paired IDs in flash
-      else{
-        Nodes[i].ID = tempNodeID;
-      }
-    }
-  #endif
+  // ZZZ default pairing for zSensor
+  Nodes[1].ID = ZSENSOR_NODE_ID;
 }
 
 /**
@@ -713,7 +703,8 @@ void InitSystem(void)
   // Halt the watchdog.
   WatchdogHold();                                                               // Stop the watchdog timer
  
-  Nodes[0].ID = CreateRandomAddress();                                          // Generate a random address.  This must be done
+  //Nodes[0].ID = CreateRandomAddress();                                          // Generate a random address.  This must be done
+  Nodes[0].ID = ZHUB_NODE_ID;
                                                                                 // before the clocks and ADC are initialized.
   // Setup board clock system.
   BoardClockSystemInit();                                                       // Intialize the system clocks
@@ -721,7 +712,7 @@ void InitSystem(void)
   SetOFIFGBit(0);                                                               // Clear Osc Fault interrupt flag
 
   FCTL2 = FWKEY | FSSEL_1 | 19;
-  SetMyNodeID(0);                                                               // Set node ID. The Flash block requires the clock
+//  SetMyNodeID(0);                                                               // Set node ID. The Flash block requires the clock
                                                                                 // to be configured prior to calling this function.
   // Setup timers.
   TimerConfigure(__BSP_TIMER1);                                                 // Initialize Timer1

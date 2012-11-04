@@ -38,22 +38,6 @@ NextState1=0
 [Action Register]
 Break=0
 State Storage=1
-[DebugChecksum]
-Checksum=1129634333
-[BreakpointUsageDialog]
-Placement=_ 1218 445 1665 732
-[CallStack]
-ShowArgs=0
-[Disassembly]
-MixedMode=1
-[CallStackLog]
-Enabled=0
-[DriverProfiling]
-Enabled=0
-Mode=0
-Graph=0
-Symbiont=0
-Exclusions=
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -62,12 +46,7 @@ Category=_ 0
 LoggingEnabled=_ 0
 LogFile=_ ""
 [Breakpoints]
-Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.c}.108.3" 0 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\..\src\Framework\Drivers\Timer\SoftwareTimer.c}.85.3" 0 0 0 0 "" 0 ""
-Bp2=_ "STD_CODE" "{$PROJ_DIR$\..\..\..\..\..\..\..\Windows\system32}.31.5" 0 0 0 0 "" 0 ""
-Bp3=_ "STD_CODE" "{$PROJ_DIR$\..\..\..\..\..\..\..\Windows\system32}.31.5" 0 0 0 0 "" 0 ""
-Bp4=_ "STD_CODE" "{$PROJ_DIR$\..\src\Application}.187.3" 0 0 0 0 "" 0 ""
-Count=5
+Count=0
 [FET]
 Clock mode=38
 Extended Clock mode=-1

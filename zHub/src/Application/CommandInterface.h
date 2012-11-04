@@ -60,7 +60,7 @@
  Note however that the parameters still has to be in the expected order and
  be hexadecimal. The XML descriptions will simply be stripped away
 */
-#define XML_INPUT_SUPPORT
+//#define XML_INPUT_SUPPORT
 
 #ifdef __CmdIF_TESTMODE
   #define MaxRawCommandLength (20)                                              //!< Need at least 20 to run the test
@@ -111,7 +111,8 @@ typedef enum ResponseNumberFormats {
   UnsignedDecimalByte  = 0x11, 
   UnsignedDecimalWord  = 0x12, 
   UnsignedDecimal24bit = 0x13, 
-  UnsignedDecimalLong  = 0x14
+  UnsignedDecimalLong  = 0x14,
+  UnsignedForcedDecimalLong  = 0x1C // ZZZ: force Decimal output
 } ResponseNumberFormats;
 
 ///**
@@ -469,5 +470,6 @@ unsigned int HWMap_RedLEDandButton(uint8_t direction, unsigned int Value);
  */
 unsigned int HWMap_PWM(uint8_t direction, unsigned int Value);
 
+void ZHUBSerialSendString(char * string, unsigned char length);
 
 #endif

@@ -18,3 +18,5 @@
 *.pbi
 *.r43
 *.dep
+path.txt
+Backup*.ewp

@@ -95,12 +95,23 @@ void main()
 
     // ---------- Get data from radio (HUB)-----------
     if(ApplicationState == HUB){                                               // Check for data received from a sensor node every pass through the loop.
-      WirelessOperation(&userBuffer[0]);
-      if(userBuffer[1] & 0x0001){                                              // Check if a command is received to set my own green LED.
-        LEDOn(__BSP_LEDGREEN1);
-      }
-      else{
-        LEDOff(__BSP_LEDGREEN1);
+      // ZZZ
+      uint8_t node_idx = WirelessOperation(&userBuffer[0]);
+      if(node_idx > 0 && node_idx < MAX_NODES){
+        // got some data from node #node_idx
+        NodeInfo*sensor = &Nodes[node_idx];
+        char buf[0x40];
+        char*p = (char*)(&sensor->ID)+3;
+        for(int i=0;i<4;i++,p--){
+          buf[i] = (*p >= 'A' && *p <= 'Z') ? *p : '_';
+        }
+        p = buf+4;
+        *p++ = ':';
+        ResponseNumber(sensor->Data[0], UnsignedForcedDecimalLong, p);
+        while(*p) p++;
+        *p++ = '\r';
+        *p++ = '\n';
+        ZHUBSerialSendString(buf,p-buf);
       }
     }
       

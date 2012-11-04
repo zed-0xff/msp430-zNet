@@ -63,6 +63,8 @@
 
 #include "CommandInterface.h"
 
+unsigned char zHubStarted = 0; // ZZZ
+
 /**
  * @brief Control the input and execution of commands.
  */
@@ -1197,6 +1199,25 @@ unsigned char CmdIF_SetCycleUpdateRate(void)
 
 //! \brief Command Interface Processing 
 //! \brief Command Interface 
+
+void ZHUBSerialSendString(char * string, unsigned char length){
+  if (!zHubStarted) return; // ZZZ
+  
+  unsigned int i=0;  
+  while ((i<length) || ((length==0) && string[i]!=0)) {                       // i<length will be evaluated first and if true the second part will not be evaluate, 
+                                                                              // making fixed length the fastest to execute
+    i++;
+  }
+  length = i;
+  if (length) {
+    uint8_t index = 0;
+    for(index=0;index<length;index++){
+      // UARTTransmitByte returns buffer full flag (1=full), so keep trying to write to UART until space is available (blocking implementation)
+      while(UARTTransmitByte(__BSP_UART1, string[index]));
+    }
+  }
+}
+
 /**
  * @fn void CmdIFResponse(char* string, unsigned char length)
  *
@@ -1207,21 +1228,9 @@ unsigned char CmdIF_SetCycleUpdateRate(void)
  */
 void CmdIFResponse(char * string, unsigned char length) 
 {
-  unsigned int i=0;
   if (!CmdFlags.ResultIsDelayed) {                                              // If we are waiting for a delayed result, we will throw away everything until then - just too bad, 
                                                                                 // Otherwize we could end up with status messages etc. inside the command response
-    while ((i<length) || ((length==0) && string[i]!=0)) {                       // i<length will be evaluated first and if true the second part will not be evaluate, 
-                                                                                // making fixed length the fastest to execute
-      i++;
-    }
-    length = i;
-    if (length) {
-      uint8_t index = 0;
-      for(index=0;index<length;index++){
-        // UARTTransmitByte returns buffer full flag (1=full), so keep trying to write to UART until space is available (blocking implementation)
-        while(UARTTransmitByte(__BSP_UART1, string[index]));
-      }
-    }
+    ZHUBSerialSendString(string,length); // ZZZ
   }
 }
 
@@ -1311,8 +1320,6 @@ signed char CmdIFCollect(signed char InData /*!< Character to be added to comman
  *        Similarly it is possible to have multiple or all layers react to a command,
  *        by processing it, but still passing it on to the next level down.
  *
- * @param CmdString a char
- *
  * @return an unsigned char
  */
 unsigned char CmdIFProcess(unsigned char * ID, unsigned int * pBuffer) 
@@ -1320,15 +1327,23 @@ unsigned char CmdIFProcess(unsigned char * ID, unsigned int * pBuffer)
   unsigned char c,len=0,res,FoundCmd=0;
   
   if (!CmdFlags.ResultIsDelayed) {
-//    if (CmdString) {                                                          // A command string was passed to us
-//      CmdIFCommandString = CmdString;
-//      CmdFlags.InternalCommand = 0;
-//    } else 
-      if (CmdFlags.CommandReady) {                                              // Do we have a CmdIFCollect()'ed command string?
+    if (CmdFlags.CommandReady) {                                              // Do we have a CmdIFCollect()'ed command string?
       RawCommand[InCmdSeq] = 0;                                                 // Add string terminator to command string
       InCmdSeq=0;                                                               // Reset the incomming command character index
       CmdFlags.InternalCommand = 1;
       CmdIFCommandString = RawCommand;
+      
+      // ZZZ
+      if(!zHubStarted){
+        char *p = CmdIFCommandString;
+        while (*p && *p != ZHUB_START_CMD[0]) p++;
+        if(StrCmp(p, ZHUB_START_CMD)){
+          zHubStarted = 1;
+          ZHUBSerialSendString("ZHUB_START_OK\r\n",0);
+        }
+        CmdFlags.CommandReady = 0;
+        return 0;
+      }
     } else {                                                                    // App may call this any time in a polling fashion, so if theres no cmd return 0
       return 0;
     }
@@ -1339,12 +1354,13 @@ unsigned char CmdIFProcess(unsigned char * ID, unsigned int * pBuffer)
       if (CmdIFCommandString[len-1] == '/') CmdIFCommandString[len-1] = 0;      // Move command termination to get rid of XML termination chars 
       #endif
                                                                                 // Execute the command 
-      TagBegin("command",0);                                                    // We have arguments
       DelayedResult=0;
       CmdFlags.ResultIsDelayed = 0;
       c=0;
       while (CommandDefinitions[c].Command[0]) {                                // Check to see that the command is not a null string, which would mean its the end of the list
-        if (StrCmp(CommandDefinitions[c].Command,CmdIFCommandString)) {
+        if (StrCmp(CommandDefinitions[c].Command,CmdIFCommandString)) {          
+          // ZZZ: only begin "command" tag if got known command
+          TagBegin("command",0);                                                    // We have arguments
           TagBegin("cmd",0);                                                    // We have found the command
 
           CmdIFResponse(CommandDefinitions[c].Command,0);
@@ -1375,8 +1391,11 @@ unsigned char CmdIFProcess(unsigned char * ID, unsigned int * pBuffer)
         c++;
       }
     Loop:
-      if (!FoundCmd) ElemAttrText("cmddef",(ResponseFlags.XML_Output) ? "err" : ":#");
-      TagEnd("command",0);
+//      if (!FoundCmd) ElemAttrText("cmddef",(ResponseFlags.XML_Output) ? "err" : ":#");
+      if (FoundCmd){
+        // ZZZ: only end "command" tag if got known command
+        TagEnd("command",0);
+      }
       if (CmdFlags.ToggleFormatUponCmdCompletion) {
         ResponseFlags.XML_Output ^= 1;
         CmdFlags.ToggleFormatUponCmdCompletion = 0;
@@ -1847,11 +1866,11 @@ void ResponseNumber(signed long Universal, unsigned char Format, char * Destinat
   char TWS[12];
   unsigned char i, Size, k;
   if (Format==0) return;                                                        // Lets not output anything if the format is not specified
-  if (!ResponseFlags.XML_Output) {
+  if (!ResponseFlags.XML_Output && Format != UnsignedForcedDecimalLong) {
     Format &= 0x0F;                                                             // If not XML, force it to be hexadecimal formatting
     Format |= 0x40;
   }
-  Size = Format & 0x0F;
+  Size = Format & 7;
   i=sizeof(TWS)-2;
   if (Format & 0x40) {                                                          // Hexadecimal format
     k=Size*2;

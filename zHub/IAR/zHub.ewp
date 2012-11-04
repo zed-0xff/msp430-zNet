@@ -97,7 +97,7 @@
         </option>
         <option>
           <name>OGChipSelectMenu</name>
-          <state>MSP430G2553	MSP430G2553</state>
+          <state>MSP430F2274	MSP430F2274</state>
         </option>
         <option>
           <name>GStackHeapOverride</name>
@@ -654,7 +654,7 @@
         </option>
         <option>
           <name>OutputFile</name>
-          <state>zSensor.d43</state>
+          <state>zHub.d43</state>
         </option>
         <option>
           <name>OutputFormat</name>
@@ -6336,7 +6336,7 @@
         </option>
         <option>
           <name>OutputFile</name>
-          <state>zSensor.d43</state>
+          <state>zHub.d43</state>
         </option>
         <option>
           <name>OutputFormat</name>
@@ -6530,7 +6530,7 @@
         </option>
         <option>
           <name>ExtraOutputFile</name>
-          <state>zSensor.a43</state>
+          <state>zHub.a43</state>
         </option>
         <option>
           <name>ExtraOutputFormat</name>

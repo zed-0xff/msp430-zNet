@@ -85,7 +85,7 @@ unsigned char Timer1CCREventHandler(const void * params);
 /**
  * @details Timer2 CCR Event Handler
  */
-//unsigned char Timer2CCREventHandler(const void * params);
+unsigned char Timer2CCREventHandler(const void * params);
 
 /**
  * @details Push Button1 Event Handler

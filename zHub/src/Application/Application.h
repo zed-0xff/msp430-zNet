@@ -38,6 +38,8 @@
 #include "Definitions.h"
 #include "Protocol.h"
 
+#include "..\..\..\common\z.h"
+
 #define __APPLICATION_NAME "Application"                                        //!< Module Display Name
 #define __APPLICATION_VERSION   1                                               //!< Module Version
 #define __APPLICATION_REVISION  0                                               //!< Module Revision

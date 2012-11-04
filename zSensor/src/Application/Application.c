@@ -30,7 +30,7 @@ NodeInfo Nodes[MAX_NODES] = {0};                                                
   does not know the sizes of things and we want to generate a compile error 
   to avoid overwriting other data areas (without costly run time checks).
 */
-PayloadFrame Payloads[2*PAYLOAD_SIZE_VALIDATION];                               // Allows us to buffer payloads or prepare seperate payloads, should we so desire
+PayloadFrame Payloads[2*PAYLOAD_SIZE_VALIDATION];                               // Allows us to buffer payloads or prepare separate payloads, should we so desire
 
 /**
  * @fn uint8_t WirelessOperation(unsigned int * pBuffer)
@@ -44,16 +44,6 @@ PayloadFrame Payloads[2*PAYLOAD_SIZE_VALIDATION];                               
 uint8_t WirelessOperation(unsigned int * pBuffer)
 {
   s_AppRadio * pRadio = &appRadio[RadioLocal.currentRadio];
-
-  if (swTimerAction == DISABLE_PAIRING)
-  {
-    SoftwareTimerDisable(__BSP_SWTIMER[0]);
-    swTimerAction = 0;
-    if (GetPairingMask())
-    {
-      SetPairingMask(0x00000000);
-    }
-  }
 
   return SensorWirelessOperation(pRadio, pBuffer);
 }
@@ -128,10 +118,10 @@ unsigned char NetworkValidation(PayloadFrame * AppFrame)
       Nodes[i].Data[3] = AppFrame->Data[1] & 0xFFF0;                            // PWM of the remote unit.
       Nodes[i].Data[1] = AppFrame->Data[1] & 0x000F;                            // State of green LED of the remote unit.
     
-    #ifdef __COMMAND_INTERFACE
-      ReportStatus(i);                                                          // Tell GUI all about the RSSI values
-      ReportData(i);                                                            // Tell the GUI all about the newly arrived data                                         
-    #endif
+//    #ifdef __COMMAND_INTERFACE
+//      ReportStatus(i);                                                          // Tell GUI all about the RSSI values
+//      ReportData(i);                                                            // Tell the GUI all about the newly arrived data                                         
+//    #endif
     return i;
   }
   return 0;
@@ -208,7 +198,9 @@ PayloadFrame * SensorPayload(unsigned int * pBuffer)
       Payloads[SENSOR_SEND_FRAME].Data[2] |= Nodes[1].Data[3] & 0xFFF4;         // Need to send the bit for new data, because it is coming from my GUI.
     }
   
-    Payloads[SENSOR_SEND_FRAME].Data[0] = (pBuffer[0] & 0xFFF0) | pBuffer[2] ;  // my own AnalogInput | DigitalInput 
+//    Payloads[SENSOR_SEND_FRAME].Data[0] = (pBuffer[0] & 0xFFF0) | pBuffer[2] ;  // my own AnalogInput | DigitalInput 
+    Payloads[SENSOR_SEND_FRAME].Data[0] = pBuffer[0] ;  // ZZZ: my own AnalogInput
+    
     Payloads[SENSOR_SEND_FRAME].Data[1] = pBuffer[1] | (pBuffer[3] & 0xFFF0);   // my own DigitalOutput | AnalogOutput
    
     if (GetPairingMask()) {
@@ -444,19 +436,8 @@ unsigned char RemoveNodeFromNetwork(unsigned char NodeIndex)
  */
 void InitFlashStorage(void)
 {
-  #ifdef INCLUDE_FLASH_STORAGE
-    unsigned char i;
-    unsigned long tempNodeID;
-    
-    for (i=1;i<MAX_NODES;i++){
-      tempNodeID = ReadMyFlashedPairedID(i);
-      if(tempNodeID == 0xFFFFFFFF)
-        WriteMyFlashedPairedID(i,Nodes[i].ID);                                  // Writes zeroes to the location of paired IDs in flash
-      else{
-        Nodes[i].ID = tempNodeID;
-      }
-    }
-  #endif
+  // ZZZ default pairing for ZHUB
+  Nodes[1].ID = ZHUB_NODE_ID;
 }
 
 /**
@@ -571,7 +552,7 @@ void InitSystem(void)
   WatchdogHold();                                                               // Stop the watchdog timer
  
 //  Nodes[0].ID = CreateRandomAddress();                                          // Generate a random address.  This must be done
-  Nodes[0].ID = 0x53535353;                                          // Generate a random address.  This must be done
+  Nodes[0].ID = ZSENSOR_NODE_ID;
                                                                                 // before the clocks and ADC are initialized.
   // Setup board clock system.
   BoardClockSystemInit();                                                       // Intialize the system clocks
@@ -585,22 +566,23 @@ void InitSystem(void)
   TimerConfigure(__BSP_TIMER1);                                                 // Initialize Timer1
   AttachEvent(__BSP_TIMER1_CCR0_EVENT_HANDLE, Timer1CCREventHandler);
   AttachEvent(__BSP_TIMER1_CCR1_EVENT_HANDLE, Timer1CCREventHandler);
-//  TimerConfigure(__BSP_TIMER2);                                                 // Initialize Timer2
-//  AttachEvent(__BSP_TIMER2_CCR0_EVENT_HANDLE, Timer2CCREventHandler);
-//  TimerSetCCR(__BSP_TIMER2, __BSP_TIMER2_CCR0, __BSP_CONFIG_SWTIMER1_SOURCE_DIV);
+  
+  // ZZZ: timer2 is required for SWTIMER!
+  TimerConfigure(__BSP_TIMER2);                                                 // Initialize Timer2
+  AttachEvent(__BSP_TIMER2_CCR0_EVENT_HANDLE, Timer2CCREventHandler);
+  TimerSetCCR(__BSP_TIMER2, __BSP_TIMER2_CCR0, __BSP_CONFIG_SWTIMER1_SOURCE_DIV);
 
   // Setup software timers.
   SoftwareTimerConfigure();                                                     // Initialize Software Timer
   SoftwareTimerSetInterval(__BSP_SWTIMER[0], 100);
   SoftwareTimerEnable(__BSP_SWTIMER[0]);
   AttachEvent(__BSP_SWTIMER[0].event, SWTimer0EventHandler);
-//  AttachEvent(__BSP_SWTIMER[1].event, SWTimer1EventHandler);                                   
 
   RadioConfigure(&__BSP_RADIO1_CONNECTION);                                     // Initialize the Radio Communication module
 
   // Setup UART.
-  UARTConfigure(__BSP_UART1);                                                   // Initialize the UART Communication module
-  AttachEvent(__BSP_UART1_RX_EVENT_HANDLE, UARTRXEventHandler);                 // Attach UART RX event handler
+//  UARTConfigure(__BSP_UART1);                                                   // Initialize the UART Communication module
+//  AttachEvent(__BSP_UART1_RX_EVENT_HANDLE, UARTRXEventHandler);                 // Attach UART RX event handler
 
   // Setup LEDs.
   //LEDConfigure(__BSP_LEDRED1);                                                  // Initialize the Red LED
@@ -614,19 +596,19 @@ void InitSystem(void)
   AttachEvent(__BSP_PORT2_EVENT_HANDLE, PortEventHandler);
 
   // Setup ADC.
-  ADCChannelConfigure(__BSP_ADC1, __BSP_ADC1_CHAN9);                            // Initialize ADC channel.
-  ADCReferenceOn(__BSP_ADC1);
-  ADCEnableInterrupt(__BSP_ADC1);
-  ADCOn(__BSP_ADC1);
-  ADCEnableConversion(__BSP_ADC1);
-  AttachEvent(__BSP_ADC1_EVENT_HANDLE, ADCEventHandler);
+//  ADCChannelConfigure(__BSP_ADC1, __BSP_ADC1_CHAN9);                            // Initialize ADC channel.
+//  ADCReferenceOn(__BSP_ADC1);
+//  ADCEnableInterrupt(__BSP_ADC1);
+//  ADCOn(__BSP_ADC1);
+//  ADCEnableConversion(__BSP_ADC1);
+//  AttachEvent(__BSP_ADC1_EVENT_HANDLE, ADCEventHandler);
   
   // Setup Application.
   InitApplication(Nodes[0].ID);                                                 // Initialize the Application (application state of the module, supporting protocol)
 
   // Start timers in "UP" mode.
   TimerEnable(__BSP_TIMER1, UP_MODE);                                           // Start the timer prior to enabling interrupts
-//  TimerEnable(__BSP_TIMER2, UP_MODE);                                           // Start the timer prior to enabling interrupts
+  TimerEnable(__BSP_TIMER2, UP_MODE);                                           // Start the timer prior to enabling interrupts
 
   // Enable interrupts now that microcontroller is ready for normal operation.
   __BSP_ENABLE_INTERRUPT();

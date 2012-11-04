@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>zHub/LaunchPad_CC110L_FCC</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>182</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1197</ColumnWidth1><ColumnWidth2>319</ColumnWidth2><ColumnWidth3>79</ColumnWidth3></Build>
+      <TerminalIO/>
+      <Debug-Log>
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1597</ColumnWidth1></Debug-Log>
+    </Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-31687-25542</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>zHub</ExpandedNode><ExpandedNode>zHub/Application</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-1889-26100</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-22759-27142</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>1</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\Drivers\UART\UART.h</Filename><XPos>0</XPos><YPos>3</YPos><SelStart>889</SelStart><SelEnd>889</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\BSP\Boards\LaunchPad\LaunchPadDrivers.h</Filename><XPos>0</XPos><YPos>538</YPos><SelStart>34739</SelStart><SelEnd>34739</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\HAL\MSP430\Peripherals\Communication\Communication.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>99</SelStart><SelEnd>99</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\HAL\Common\DataManagement\CircularBuffer\CircularBuffer.c</Filename><XPos>0</XPos><YPos>63</YPos><SelStart>2272</SelStart><SelEnd>2272</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\..\..\..\..\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\430\inc\msp430g2553.h</Filename><XPos>0</XPos><YPos>132</YPos><SelStart>5452</SelStart><SelEnd>5452</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\Drivers\Watchdog\Watchdog.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>391</SelStart><SelEnd>391</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\HAL\MSP430\Peripherals\Architecture\BasicClockModulePlus\BasicClockModulePlus.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>1297</SelStart><SelEnd>1297</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\Drivers\ADC\ADC.h</Filename><XPos>0</XPos><YPos>49</YPos><SelStart>2138</SelStart><SelEnd>2138</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\HAL\MSP430\Peripherals\DataConverter\ADC10\ADC10.h</Filename><XPos>0</XPos><YPos>91</YPos><SelStart>3382</SelStart><SelEnd>3382</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\Callback.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\Protocol.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\RadioOperation.c</Filename><XPos>0</XPos><YPos>48</YPos><SelStart>3154</SelStart><SelEnd>3154</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\Protocol.c</Filename><XPos>0</XPos><YPos>33</YPos><SelStart>2689</SelStart><SelEnd>2689</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\Application.c</Filename><XPos>0</XPos><YPos>177</YPos><SelStart>10314</SelStart><SelEnd>10314</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\main.c</Filename><XPos>0</XPos><YPos>78</YPos><SelStart>5700</SelStart><SelEnd>5700</SelEnd></Tab><ActiveTab>14</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\RadioOperation.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\common\z.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>91</SelStart><SelEnd>91</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\CommandInterface.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>4868</SelStart><SelEnd>4868</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\CommandInterface.c</Filename><XPos>0</XPos><YPos>1364</YPos><SelStart>55686</SelStart><SelEnd>55686</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\Application.h</Filename><XPos>0</XPos><YPos>159</YPos><SelStart>8028</SelStart><SelEnd>8028</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Application\Callback.c</Filename><XPos>0</XPos><YPos>51</YPos><SelStart>3853</SelStart><SelEnd>3853</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\Drivers\Radio\Radio.c</Filename><XPos>0</XPos><YPos>3</YPos><SelStart>570</SelStart><SelEnd>570</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\zHub\src\Framework\Drivers\Radio\CCXXX\Interface\CC1101Interface.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>164</SelStart><SelEnd>164</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-002618d8><key>iaridepm.enu1</key></Toolbar-002618d8></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>777</Bottom><Right>256</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>202</yscreen><sizeHorzCX>120627</sizeHorzCX><sizeHorzCY>197266</sizeHorzCY><sizeVertCX>155609</sizeVertCX><sizeVertCY>760742</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>200</Bottom><Right>1660</Right><x>-2</x><y>-2</y><xscreen>1662</xscreen><yscreen>202</yscreen><sizeHorzCX>1002413</sizeHorzCX><sizeHorzCY>197266</sizeHorzCY><sizeVertCX>120627</sizeVertCX><sizeVertCY>197266</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

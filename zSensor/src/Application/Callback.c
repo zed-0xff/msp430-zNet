@@ -123,22 +123,22 @@ unsigned char PortEventHandler(const void * params)
  *
  * @return an unsigned character
  */
-unsigned char UARTRXEventHandler(const void * params)
-{
-  unsigned char readValue = 0;
-
-  // Get event parameters.
-  EventParameters * p = (EventParameters *) params;
-
-  // Check event type.
-  if (p->event == __BSP_UART1_RX_EVENT)
-  {
-    UARTReceiveByte(__BSP_UART1, &readValue);
-    CmdIFCollect(readValue);                                                    // Collect the received command character by character.
-  }
-  
-  return EVENT_WAKE_UP;
-}
+//unsigned char UARTRXEventHandler(const void * params)
+//{
+//  unsigned char readValue = 0;
+//
+//  // Get event parameters.
+//  EventParameters * p = (EventParameters *) params;
+//
+//  // Check event type.
+//  if (p->event == __BSP_UART1_RX_EVENT)
+//  {
+//    UARTReceiveByte(__BSP_UART1, &readValue);
+//    CmdIFCollect(readValue);                                                    // Collect the received command character by character.
+//  }
+//  
+//  return EVENT_WAKE_UP;
+//}
 
 /**
  * @fn unsigned char Timer1CCREventHandler(const void * params)
@@ -188,10 +188,11 @@ unsigned char Timer1CCREventHandler(const void * params)
  *
  * @return an unsigned character
  */
-//unsigned char Timer2CCREventHandler(const void * params)
-//{
-//  return EVENT_NO_ACTION;
-//}
+unsigned char Timer2CCREventHandler(const void * params)
+{
+//  LEDToggle(__BSP_LEDRED1);
+  return EVENT_NO_ACTION;
+}
 
 /**
  * @fn unsigned char SWTimer0EventHandler(const void * params)
@@ -204,8 +205,6 @@ unsigned char Timer1CCREventHandler(const void * params)
  */
 unsigned char SWTimer0EventHandler(const void * params)
 {
-  swTimerAction = DISABLE_PAIRING;
-  
   return EVENT_NO_ACTION;
 }
 
